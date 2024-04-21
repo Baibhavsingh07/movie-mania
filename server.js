@@ -7,9 +7,12 @@ const path = require("path");
 
 app.use(cors());
 app.use(express.json());
+require("dotenv").config();
+
+const port = process.env.PORT;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/netflix", {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -25,6 +28,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "moviemania-ui", "build", "index.html"));
 });
 
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("Backend server is running");
 });
