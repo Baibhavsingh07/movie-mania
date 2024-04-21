@@ -15,6 +15,7 @@ mongoose
   })
   .then(() => {
     console.log("DB Connected");
+    console.log(1);
   });
 
 app.use("/api/user", userRoutes);
